@@ -61,14 +61,7 @@ int dendrogram::find(int i) {
 }
 
 void dendrogram::merge(edge *e) {
-    // TODO: Exercise 5
-    // Plan:
-    // 1. Find the representatives
-    // 2. Choose the highest
-    // 3. Adjust parent, left, and down
-    // 4. Update ranks
-    // 5. Update heights
-
+    
     int par1 = find(e->get_p1()), par2 = find(e->get_p2());
     if(rank[par2] > rank[par1]) swap(par1, par2);
     else if(rank[par2] == rank[par1] && par2 > par1) swap(par1, par2);

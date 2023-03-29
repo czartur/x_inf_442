@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from scipy.cluster.hierarchy import dendrogram, linkage
 from scipy.spatial.distance import squareform
 
-fname = '../csv/languages.csv'
+
 def load_distance_matrix(fname):
     """
     Takes as input a name of a file containing the information about a graph:
@@ -18,9 +18,13 @@ def load_distance_matrix(fname):
         dist_matrix = [[float(x) for x in f.readline().split(',')] for _ in range(n)]
         return (squareform(dist_matrix), labels)
     
+# fname = '../csv/bluered.csv'
 # data = pd.read_csv(fname, header = 0)
-data, labels = load_distance_matrix(fname)
+# tree = linkage(data[['x', 'y']], method='single')
+# D = dendrogram(tree, orientation = 'left')
 
-tree = linkage(data, method='average')
+fname = '../csv/languages.csv'
+data, labels = load_distance_matrix(fname)
+tree = linkage(data, method = 'single')
 D = dendrogram(tree, labels = labels, orientation = 'left')
 plt.show()
